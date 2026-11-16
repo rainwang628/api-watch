@@ -33,7 +33,7 @@ api-watch/
 ├── panel/index.html     面板前端（手机自适应）
 ├── config.example.json  配置样例
 ├── .env.example         Key 样例
-└── data/watch.db        SQLite（自动创建，不入库）
+└── data/watch.db        SQLite（自动创建）
 ```
 
 ## 快速开始
@@ -150,7 +150,7 @@ http://<Mac 内网 IP>:8787/?token=<panel.token>
 
 ## 安全
 
-- Key 只从环境变量 / `.env` 读取，`config.json`、`.env`、`data/` 都不入库。
+- Key 从环境变量或 `.env` 读取；面板口令要改掉样例值。
 - 别让中转站的响应直接进有凭据的环境（视频里提到的注入风险），涉及密钥、私钥的操作走官方通道。
 
 ## 2026-11-15 接 AIGoCode 实测记录
