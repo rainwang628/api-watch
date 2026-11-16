@@ -1,0 +1,45 @@
+{
+  "panel": {
+    "host": "0.0.0.0",
+    "port": 8787,
+    "token": "change-me"
+  },
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 8788
+  },
+  "probe": {
+    "interval_sec": 300,
+    "capability_interval_sec": 21600,
+    "timeout_sec": 60,
+    "cooldown_sec": 600,
+    "idle_stop_sec": 7200,
+    "idle_check_sec": 300
+  },
+  "channels": [
+    {
+      "id": "aigocode-gpt",
+      "name": "AIGoCode · ChatGPT",
+      "base_url": "https://api.aigocode.com/v1",
+      "api": "openai",
+      "key_env": "AIGOCODE_GPT_KEY",
+      "models": [
+        "gpt-5.3-codex"
+      ],
+      "priority": 1,
+      "provider_group": "openai"
+    },
+    {
+      "id": "aigocode-claude",
+      "name": "AIGoCode · Claude",
+      "base_url": "https://api.aigocode.com",
+      "api": "anthropic",
+      "key_env": "AIGOCODE_CLAUDE_KEY",
+      "models": [
+        "claude-opus-4-6"
+      ],
+      "priority": 1,
+      "provider_group": "anthropic"
+    }
+  ]
+}
