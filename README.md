@@ -33,7 +33,7 @@ api-watch/
 ├── panel/index.html     面板前端（手机自适应）
 ├── config.example.json  配置样例
 ├── .env.example         Key 样例
-└── data/watch.db        SQLite（自动创建）
+└── data/watch.db        SQLite（自动创建，不入库）
 ```
 
 ## 快速开始
@@ -65,7 +65,7 @@ python3 gateway.py
 
 | Label | 脚本 | 端口 | 日志 |
 |---|---|---|---|
-| `com.rain.apiwatch.watchd` | `watchd.py` | `0.0.0.0:8787` | `data/watchd.log` |
+| `com.rain.apiwatch.watchd` | `watchd.py` | `127.0.0.1:8787` | `data/watchd.log` |
 | `com.rain.apiwatch.gateway` | `gateway.py` | `127.0.0.1:8788` | `data/gateway.log` |
 
 plist 里的 `ProgramArguments`、`WorkingDirectory`、日志路径都是绝对路径，**移动项目目录必须同步改**，否则服务起不来。
@@ -150,7 +150,8 @@ http://<Mac 内网 IP>:8787/?token=<panel.token>
 
 ## 安全
 
-- Key 从环境变量或 `.env` 读取；面板口令要改掉样例值。
+- Key 只从环境变量 / `.env` 读取，`config.json`、`.env`、`data/` 都不入库。
+- 面板默认只绑 `127.0.0.1`，要手机访问走 Tailscale 或反向代理，别直接 `0.0.0.0` 暴露到局域网外。
 - 别让中转站的响应直接进有凭据的环境（视频里提到的注入风险），涉及密钥、私钥的操作走官方通道。
 
 ## 2026-11-15 接 AIGoCode 实测记录
